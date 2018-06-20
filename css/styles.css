@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 * {
   margin: 0;
   padding: 0;
@@ -66,6 +67,198 @@ div {
   box-sizing: border-box;
 }
 
-body.fixed {
+.groupSwitcher {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: darkblue;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+.groupSwitcher a {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  font-size: 12px;
+  color: #fff;
+  line-height: 58px;
+  padding: 0 20px;
+  opacity: 0.5;
+  -moz-transition: all ease-in-out;
+  -o-transition: all ease-in-out;
+  -webkit-transition: all ease-in-out;
+  transition: all ease-in-out;
+}
+.groupSwitcher a.active {
+  opacity: 1;
+  border-bottom: 2px solid darkorange;
+}
+
+.hamMenu .menuIcon {
+  cursor: pointer;
+  z-index: 10;
+  position: absolute;
+  left: 20px;
+  top: 80px;
+  width: 20px;
+  height: 20px;
+}
+.hamMenu .menuIcon:hover .line.top {
+  -moz-transform: translateX(-5px);
+  -ms-transform: translateX(-5px);
+  -webkit-transform: translateX(-5px);
+  transform: translateX(-5px);
+}
+.hamMenu .menuIcon:hover .line.bottom {
+  -moz-transform: translateX(5px);
+  -ms-transform: translateX(5px);
+  -webkit-transform: translateX(5px);
+  transform: translateX(5px);
+}
+.hamMenu .menuIcon .line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.hamMenu .menuIcon .line.top {
+  top: 0;
+}
+.hamMenu .menuIcon .line.bottom {
+  bottom: 0;
+}
+.hamMenu .menuIcon .line.mid {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.matchWrapper {
+  margin-top: 60px;
+  display: grid;
+  height: calc(100vh - 60px);
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+}
+.matchWrapper .match {
+  position: relative;
+  color: #fff;
+  cursor: pointer;
   overflow: hidden;
+}
+.matchWrapper .match:hover .bgPic {
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.matchWrapper .match:hover .bgPic:after {
+  opacity: 0.3;
+}
+.matchWrapper .match .bgPic {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.matchWrapper .match .bgPic:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: darkred;
+  opacity: 0.75;
+  z-index: 0;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.matchWrapper .match .bgPic.samara {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/skb2l9n0lcuk0mlcpd4j.jpg");
+}
+.matchWrapper .match .bgPic.ekb {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/sjlopwshjqdd2tjmhtmj.jpg");
+}
+.matchWrapper .match .bgPic.nnov {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/yywgbgebo25zv0qqs4ii.jpg");
+}
+.matchWrapper .match .bgPic.spb {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/l21sihwmzrncbjowxr5h.jpg");
+}
+.matchWrapper .match .bgPic.volg {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/boxxx8nbwhjo2gx7jitd.jpg");
+}
+.matchWrapper .match .bgPic.kali {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/ewn3jf01twtd8wah44q1.jpg");
+}
+.matchWrapper .match .bgPic.kazan {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/q3ergcjjgswgyn6uiu9w.jpg");
+}
+.matchWrapper .match .bgPic.mord {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/cvysdhzsahmivlxi7ro1.jpg");
+}
+.matchWrapper .match .bgPic.sochy {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/ixnsliynjojm37ettnak.jpg");
+}
+.matchWrapper .match .matchContent {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  width: 100%;
+}
+.matchWrapper .match .matchContent .matchData {
+  line-height: 24px;
+}
+.matchWrapper .match .matchContent .teamInfo > div {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+}
+.matchWrapper .match .matchContent .teamInfo .count {
+  font-size: 32px;
+}
+.matchWrapper .match .matchContent .teamInfo .team_logo {
+  margin: 0 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 82px;
+  height: 40px;
+}
+.matchWrapper .match .matchContent .teamInfo .team_logo.denm {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/den");
+}
+.matchWrapper .match .matchContent .teamInfo .team_logo.france {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/fra");
+}
+.matchWrapper .match .matchContent .teamInfo .team_logo.peru {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/per");
+}
+.matchWrapper .match .matchContent .teamInfo .team_logo.aust {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/aus");
 }
