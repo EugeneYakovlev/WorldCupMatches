@@ -77,13 +77,16 @@ $openSans: 'Open Sans', sans-serif;
   font-family: $openSans;
   a {
     @include inline-block(middle);
-    font-size: 12px;
+    font-size: 14px;
     color: #fff;
     line-height: 58px;
     padding: 0 20px;
     opacity: 0.5;
     @include transition(all ease-in-out);
-    &.active {
+    &:hover {
+      opacity: 1;
+    }
+    &.router-link-active {
       opacity: 1;
       border-bottom: 2px solid darkorange;
     }
@@ -128,113 +131,134 @@ $openSans: 'Open Sans', sans-serif;
     }
   }
 }
-.matchWrapper {
+.content {
   margin-top: $barHeight;
-  display: grid;
   height: calc(100vh - 60px);
   width: 100%;
-  grid-template-columns: 1fr 1fr;
-  .match {
-    position: relative;
-    color: #fff;
-    cursor: pointer;
-    overflow: hidden;
-    &:hover {
-      .bgPic {
-        @include transform(scale(1.1));
-        &:after {
-          opacity: 0.3;
+  .matchWrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .match {
+      position: relative;
+      color: #fff;
+      cursor: pointer;
+      overflow: hidden;
+      &:hover {
+        .bgPic {
+          @include transform(scale(1.1));
+          &:after {
+            opacity: 0.3;
+          }
         }
       }
-    }
-    .bgPic {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      @include transition(all ease-in-out .3s);
-      &:after {
-        content: '';
+      .bgPic {
         position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
         width: 100%;
         height: 100%;
-        background: darkred;
-        opacity: 0.75;
-        z-index: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         @include transition(all ease-in-out .3s);
-      }
-      &.samara {
-        background-image: url("https://img.fifa.com/image/upload/t_tc1/skb2l9n0lcuk0mlcpd4j.jpg");
-      }
-      &.ekb {
-        background-image: url("https://img.fifa.com/image/upload/t_tc1/sjlopwshjqdd2tjmhtmj.jpg");
-      }
-      &.nnov {
-        background-image: url("https://img.fifa.com/image/upload/t_tc1/yywgbgebo25zv0qqs4ii.jpg");
-      }
-      &.spb {
-        background-image: url("https://img.fifa.com/image/upload/t_tc1/l21sihwmzrncbjowxr5h.jpg");
-      }
-      &.volg {
-        background-image: url('https://img.fifa.com/image/upload/t_tc1/boxxx8nbwhjo2gx7jitd.jpg');
-      }
-      &.kali {
-        background-image: url("https://img.fifa.com/image/upload/t_tc1/ewn3jf01twtd8wah44q1.jpg");
-      }
-      &.kazan {
-        background-image: url("https://img.fifa.com/image/upload/t_tc1/q3ergcjjgswgyn6uiu9w.jpg");
-      }
-      &.mord {
-        background-image: url("https://img.fifa.com/image/upload/t_tc1/cvysdhzsahmivlxi7ro1.jpg");
-      }
-      &.sochy {
-        background-image: url("https://img.fifa.com/image/upload/t_tc1/ixnsliynjojm37ettnak.jpg");
-      }
-    }
-    .matchContent {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      text-align: center;
-      width: 100%;
-      .matchData {
-        line-height: 24px;
-      }
-      .teamInfo {
-        > div {
-          @include inline-block(middle);
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          background: darkred;
+          opacity: 0.75;
+          z-index: 0;
+          @include transition(all ease-in-out .3s);
         }
-        .count {
-          font-size: 32px;
+        &.samara {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/skb2l9n0lcuk0mlcpd4j.jpg");
         }
-        .team_logo {
-          margin: 0 20px;
-          background-repeat: no-repeat;
-          background-size: contain;
-          width: 82px;
-          height: 40px;
-          &.denm {
-            background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/den");
+        &.ekb {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/sjlopwshjqdd2tjmhtmj.jpg");
+        }
+        &.nnov {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/yywgbgebo25zv0qqs4ii.jpg");
+        }
+        &.spb {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/l21sihwmzrncbjowxr5h.jpg");
+        }
+        &.volg {
+          background-image: url('https://img.fifa.com/image/upload/t_tc1/boxxx8nbwhjo2gx7jitd.jpg');
+        }
+        &.kali {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/ewn3jf01twtd8wah44q1.jpg");
+        }
+        &.kazan {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/q3ergcjjgswgyn6uiu9w.jpg");
+        }
+        &.mord {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/cvysdhzsahmivlxi7ro1.jpg");
+        }
+        &.sochy {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/ixnsliynjojm37ettnak.jpg");
+        }
+        &.luzh {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/kyr8lskwtjvpzvfa7r5k.jpg");
+        }
+        &.rostov {
+          background-image: url("https://img.fifa.com/image/upload/t_tc1/zbygeq7ju0nesqulwzm3.jpg");
+        }
+      }
+      .matchContent {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        width: 100%;
+        .matchData {
+          line-height: 24px;
+        }
+        .teamInfo {
+          > div {
+            @include inline-block(middle);
           }
-          &.france {
-            background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/fra");
+          .count {
+            font-size: 32px;
           }
-          &.peru {
-            background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/per");
-          }
-          &.aust {
-            background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/aus");
+          .team_logo {
+            margin: 0 20px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 82px;
+            height: 40px;
+            &.denm {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/den");
+            }
+            &.france {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/fra");
+            }
+            &.peru {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/per");
+            }
+            &.aust {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/aus");
+            }
+            &.saud {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/ksa");
+            }
+            &.egypt {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/egy");
+            }
+            &.russia {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/rus");
+            }
+            &.uru {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/uru");
+            }
           }
         }
       }

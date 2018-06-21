@@ -82,7 +82,7 @@ div {
   *vertical-align: auto;
   *zoom: 1;
   *display: inline;
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
   line-height: 58px;
   padding: 0 20px;
@@ -92,7 +92,10 @@ div {
   -webkit-transition: all ease-in-out;
   transition: all ease-in-out;
 }
-.groupSwitcher a.active {
+.groupSwitcher a:hover {
+  opacity: 1;
+}
+.groupSwitcher a.router-link-active {
   opacity: 1;
   border-bottom: 2px solid darkorange;
 }
@@ -140,29 +143,32 @@ div {
   margin: auto;
 }
 
-.matchWrapper {
+.content {
   margin-top: 60px;
-  display: grid;
   height: calc(100vh - 60px);
   width: 100%;
+}
+.content .matchWrapper {
+  height: 100%;
+  display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.matchWrapper .match {
+.content .matchWrapper .match {
   position: relative;
   color: #fff;
   cursor: pointer;
   overflow: hidden;
 }
-.matchWrapper .match:hover .bgPic {
+.content .matchWrapper .match:hover .bgPic {
   -moz-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-.matchWrapper .match:hover .bgPic:after {
+.content .matchWrapper .match:hover .bgPic:after {
   opacity: 0.3;
 }
-.matchWrapper .match .bgPic {
+.content .matchWrapper .match .bgPic {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -179,7 +185,7 @@ div {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.matchWrapper .match .bgPic:after {
+.content .matchWrapper .match .bgPic:after {
   content: '';
   position: absolute;
   left: 0;
@@ -196,69 +202,87 @@ div {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.matchWrapper .match .bgPic.samara {
+.content .matchWrapper .match .bgPic.samara {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/skb2l9n0lcuk0mlcpd4j.jpg");
 }
-.matchWrapper .match .bgPic.ekb {
+.content .matchWrapper .match .bgPic.ekb {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/sjlopwshjqdd2tjmhtmj.jpg");
 }
-.matchWrapper .match .bgPic.nnov {
+.content .matchWrapper .match .bgPic.nnov {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/yywgbgebo25zv0qqs4ii.jpg");
 }
-.matchWrapper .match .bgPic.spb {
+.content .matchWrapper .match .bgPic.spb {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/l21sihwmzrncbjowxr5h.jpg");
 }
-.matchWrapper .match .bgPic.volg {
+.content .matchWrapper .match .bgPic.volg {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/boxxx8nbwhjo2gx7jitd.jpg");
 }
-.matchWrapper .match .bgPic.kali {
+.content .matchWrapper .match .bgPic.kali {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/ewn3jf01twtd8wah44q1.jpg");
 }
-.matchWrapper .match .bgPic.kazan {
+.content .matchWrapper .match .bgPic.kazan {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/q3ergcjjgswgyn6uiu9w.jpg");
 }
-.matchWrapper .match .bgPic.mord {
+.content .matchWrapper .match .bgPic.mord {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/cvysdhzsahmivlxi7ro1.jpg");
 }
-.matchWrapper .match .bgPic.sochy {
+.content .matchWrapper .match .bgPic.sochy {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/ixnsliynjojm37ettnak.jpg");
 }
-.matchWrapper .match .matchContent {
+.content .matchWrapper .match .bgPic.luzh {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/kyr8lskwtjvpzvfa7r5k.jpg");
+}
+.content .matchWrapper .match .bgPic.rostov {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/zbygeq7ju0nesqulwzm3.jpg");
+}
+.content .matchWrapper .match .matchContent {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
   width: 100%;
 }
-.matchWrapper .match .matchContent .matchData {
+.content .matchWrapper .match .matchContent .matchData {
   line-height: 24px;
 }
-.matchWrapper .match .matchContent .teamInfo > div {
+.content .matchWrapper .match .matchContent .teamInfo > div {
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
   *zoom: 1;
   *display: inline;
 }
-.matchWrapper .match .matchContent .teamInfo .count {
+.content .matchWrapper .match .matchContent .teamInfo .count {
   font-size: 32px;
 }
-.matchWrapper .match .matchContent .teamInfo .team_logo {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo {
   margin: 0 20px;
   background-repeat: no-repeat;
   background-size: contain;
   width: 82px;
   height: 40px;
 }
-.matchWrapper .match .matchContent .teamInfo .team_logo.denm {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.denm {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/den");
 }
-.matchWrapper .match .matchContent .teamInfo .team_logo.france {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.france {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/fra");
 }
-.matchWrapper .match .matchContent .teamInfo .team_logo.peru {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.peru {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/per");
 }
-.matchWrapper .match .matchContent .teamInfo .team_logo.aust {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.aust {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/aus");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.saud {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/ksa");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.egypt {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/egy");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.russia {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/rus");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.uru {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/uru");
 }
