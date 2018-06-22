@@ -75,6 +75,7 @@ div {
   background: darkblue;
   text-align: center;
   font-family: "Open Sans", sans-serif;
+  z-index: 20;
 }
 .groupSwitcher a {
   display: inline-block;
@@ -95,15 +96,15 @@ div {
 .groupSwitcher a:hover {
   opacity: 1;
 }
-.groupSwitcher a.router-link-active {
+.groupSwitcher a.active {
   opacity: 1;
   border-bottom: 2px solid darkorange;
 }
 
 .hamMenu .menuIcon {
+  position: fixed;
   cursor: pointer;
   z-index: 10;
-  position: absolute;
   left: 20px;
   top: 80px;
   width: 20px;
@@ -158,6 +159,7 @@ div {
   color: #fff;
   cursor: pointer;
   overflow: hidden;
+  min-height: calc((100vh - 60px) / 3);
 }
 .content .matchWrapper .match:hover .bgPic {
   -moz-transform: scale(1.1);
@@ -205,35 +207,38 @@ div {
 .content .matchWrapper .match .bgPic.samara {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/skb2l9n0lcuk0mlcpd4j.jpg");
 }
-.content .matchWrapper .match .bgPic.ekb {
+.content .matchWrapper .match .bgPic.ekaterinburg {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/sjlopwshjqdd2tjmhtmj.jpg");
 }
-.content .matchWrapper .match .bgPic.nnov {
+.content .matchWrapper .match .bgPic.nizhnynovgorod {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/yywgbgebo25zv0qqs4ii.jpg");
 }
-.content .matchWrapper .match .bgPic.spb {
+.content .matchWrapper .match .bgPic.saintpetersburg {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/l21sihwmzrncbjowxr5h.jpg");
 }
-.content .matchWrapper .match .bgPic.volg {
+.content .matchWrapper .match .bgPic.volgograd {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/boxxx8nbwhjo2gx7jitd.jpg");
 }
-.content .matchWrapper .match .bgPic.kali {
+.content .matchWrapper .match .bgPic.kaliningrad {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/ewn3jf01twtd8wah44q1.jpg");
 }
 .content .matchWrapper .match .bgPic.kazan {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/q3ergcjjgswgyn6uiu9w.jpg");
 }
-.content .matchWrapper .match .bgPic.mord {
+.content .matchWrapper .match .bgPic.mordovia {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/cvysdhzsahmivlxi7ro1.jpg");
 }
-.content .matchWrapper .match .bgPic.sochy {
+.content .matchWrapper .match .bgPic.fisht {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/ixnsliynjojm37ettnak.jpg");
 }
-.content .matchWrapper .match .bgPic.luzh {
+.content .matchWrapper .match .bgPic.luzhniki {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/kyr8lskwtjvpzvfa7r5k.jpg");
 }
 .content .matchWrapper .match .bgPic.rostov {
   background-image: url("https://img.fifa.com/image/upload/t_tc1/zbygeq7ju0nesqulwzm3.jpg");
+}
+.content .matchWrapper .match .bgPic.spartak {
+  background-image: url("https://img.fifa.com/image/upload/t_tc1/fp5ejgsgx70cv8vla9df.jpg");
 }
 .content .matchWrapper .match .matchContent {
   position: absolute;
@@ -262,27 +267,99 @@ div {
   width: 82px;
   height: 40px;
 }
-.content .matchWrapper .match .matchContent .teamInfo .team_logo.denm {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.den {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/den");
 }
-.content .matchWrapper .match .matchContent .teamInfo .team_logo.france {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.fra {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/fra");
 }
-.content .matchWrapper .match .matchContent .teamInfo .team_logo.peru {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.per {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/per");
 }
-.content .matchWrapper .match .matchContent .teamInfo .team_logo.aust {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.aus {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/aus");
 }
-.content .matchWrapper .match .matchContent .teamInfo .team_logo.saud {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.ksa {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/ksa");
 }
-.content .matchWrapper .match .matchContent .teamInfo .team_logo.egypt {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.egy {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/egy");
 }
-.content .matchWrapper .match .matchContent .teamInfo .team_logo.russia {
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.rus {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/rus");
 }
 .content .matchWrapper .match .matchContent .teamInfo .team_logo.uru {
   background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/uru");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.bel {
+  background-image: url("http://api.fifa.com/api/v1/picture/flags-fwc2018-4/BEL");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.tun {
+  background-image: url("http://api.fifa.com/api/v1/picture/flags-fwc2018-4/TUN");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.eng {
+  background-image: url("http://api.fifa.com/api/v1/picture/flags-fwc2018-4/ENG");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.pan {
+  background-image: url("http://api.fifa.com/api/v1/picture/flags-fwc2018-4/PAN");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.bra {
+  background-image: url("https://api.fifa.com/api/v1/picture//flags-fwc2018-4/BRA");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.crc {
+  background-image: url("https://api.fifa.com/api/v1/picture//flags-fwc2018-4/CRC");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.arg {
+  background-image: url("https://api.fifa.com/api/v1/picture//flags-fwc2018-4/ARG");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.cro {
+  background-image: url("https://api.fifa.com/api/v1/picture//flags-fwc2018-4/CRO");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.col {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/col");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.nga {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/nga");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.isl {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/isl");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.srb {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/srb");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.esp {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/esp");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.ger {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/ger");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.irn {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/irn");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.jpn {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/jpn");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.kor {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/kor");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.mar {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/mar");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.mex {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/mex");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.pol {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/pol");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.por {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/por");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.sen {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/sen");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.sui {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/sui");
+}
+.content .matchWrapper .match .matchContent .teamInfo .team_logo.swe {
+  background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/swe");
 }

@@ -75,6 +75,7 @@ $openSans: 'Open Sans', sans-serif;
   background: darkblue;
   text-align: center;
   font-family: $openSans;
+  z-index: 20;
   a {
     @include inline-block(middle);
     font-size: 14px;
@@ -86,7 +87,7 @@ $openSans: 'Open Sans', sans-serif;
     &:hover {
       opacity: 1;
     }
-    &.router-link-active {
+    &.active {
       opacity: 1;
       border-bottom: 2px solid darkorange;
     }
@@ -94,9 +95,9 @@ $openSans: 'Open Sans', sans-serif;
 }
 .hamMenu {
   .menuIcon {
+    position: fixed;
     cursor: pointer;
     z-index: 10;
-    position: absolute;
     left: 20px;
     top: $barHeight + 20px;
     width: 20px;
@@ -144,6 +145,7 @@ $openSans: 'Open Sans', sans-serif;
       color: #fff;
       cursor: pointer;
       overflow: hidden;
+      min-height: calc((100vh - 60px) / 3);
       &:hover {
         .bgPic {
           @include transform(scale(1.1));
@@ -182,35 +184,38 @@ $openSans: 'Open Sans', sans-serif;
         &.samara {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/skb2l9n0lcuk0mlcpd4j.jpg");
         }
-        &.ekb {
+        &.ekaterinburg {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/sjlopwshjqdd2tjmhtmj.jpg");
         }
-        &.nnov {
+        &.nizhnynovgorod {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/yywgbgebo25zv0qqs4ii.jpg");
         }
-        &.spb {
+        &.saintpetersburg {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/l21sihwmzrncbjowxr5h.jpg");
         }
-        &.volg {
+        &.volgograd {
           background-image: url('https://img.fifa.com/image/upload/t_tc1/boxxx8nbwhjo2gx7jitd.jpg');
         }
-        &.kali {
+        &.kaliningrad {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/ewn3jf01twtd8wah44q1.jpg");
         }
         &.kazan {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/q3ergcjjgswgyn6uiu9w.jpg");
         }
-        &.mord {
+        &.mordovia {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/cvysdhzsahmivlxi7ro1.jpg");
         }
-        &.sochy {
+        &.fisht {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/ixnsliynjojm37ettnak.jpg");
         }
-        &.luzh {
+        &.luzhniki {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/kyr8lskwtjvpzvfa7r5k.jpg");
         }
         &.rostov {
           background-image: url("https://img.fifa.com/image/upload/t_tc1/zbygeq7ju0nesqulwzm3.jpg");
+        }
+        &.spartak {
+          background-image: url('https://img.fifa.com/image/upload/t_tc1/fp5ejgsgx70cv8vla9df.jpg');
         }
       }
       .matchContent {
@@ -235,29 +240,101 @@ $openSans: 'Open Sans', sans-serif;
             background-size: contain;
             width: 82px;
             height: 40px;
-            &.denm {
+            &.den {
               background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/den");
             }
-            &.france {
+            &.fra {
               background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/fra");
             }
-            &.peru {
+            &.per {
               background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/per");
             }
-            &.aust {
+            &.aus {
               background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/aus");
             }
-            &.saud {
+            &.ksa {
               background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/ksa");
             }
-            &.egypt {
+            &.egy {
               background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/egy");
             }
-            &.russia {
+            &.rus {
               background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/rus");
             }
             &.uru {
               background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/uru");
+            }
+            &.bel {
+              background-image: url("http://api.fifa.com/api/v1/picture/flags-fwc2018-4/BEL");
+            }
+            &.tun {
+              background-image: url("http://api.fifa.com/api/v1/picture/flags-fwc2018-4/TUN");
+            }
+            &.eng {
+              background-image: url("http://api.fifa.com/api/v1/picture/flags-fwc2018-4/ENG");
+            }
+            &.pan {
+              background-image: url("http://api.fifa.com/api/v1/picture/flags-fwc2018-4/PAN");
+            }
+            &.bra {
+              background-image: url("https://api.fifa.com/api/v1/picture//flags-fwc2018-4/BRA");
+            }
+            &.crc {
+              background-image: url("https://api.fifa.com/api/v1/picture//flags-fwc2018-4/CRC");
+            }
+            &.arg {
+              background-image: url("https://api.fifa.com/api/v1/picture//flags-fwc2018-4/ARG");
+            }
+            &.cro {
+              background-image: url("https://api.fifa.com/api/v1/picture//flags-fwc2018-4/CRO");
+            }
+            &.col {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/col");
+            }
+            &.nga {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-4/nga");
+            }
+            &.isl {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/isl");
+            }
+            &.srb {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/srb");
+            }
+            &.esp {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/esp");
+            }
+            &.ger {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/ger");
+            }
+            &.irn {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/irn");
+            }
+            &.jpn {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/jpn");
+            }
+            &.kor {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/kor");
+            }
+            &.mar {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/mar");
+            }
+            &.mex {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/mex");
+            }
+            &.pol {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/pol");
+            }
+            &.por {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/por");
+            }
+            &.sen {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/sen");
+            }
+            &.sui {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/sui");
+            }
+            &.swe {
+              background-image: url("https://api.fifa.com/api/v1/picture/flags-fwc2018-3/swe");
             }
           }
         }
