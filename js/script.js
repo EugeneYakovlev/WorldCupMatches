@@ -1,25 +1,24 @@
 $(document).ready(function () {
-    var requestUrl = 'https://raw.githubusercontent.com/openfootball/world-cup.json/master/2018/worldcup.json';
-    var request = new XMLHttpRequest();
+    let requestUrl = 'https://raw.githubusercontent.com/openfootball/world-cup.json/master/2018/worldcup.json';
+    let request = new XMLHttpRequest();
 
     request.open('GET', requestUrl);
     request.responseType = 'json';
     request.send();
 
-    var worldCup;
+    let worldCup;
     request.onload = function () {
         worldCup = request.response;
         showMatches(worldCup, "all");
     };
 
     function showMatches(jsonObj, group) {
-        var rounds = jsonObj['rounds'];
-        for (var i = 0; i < rounds.length; i++) {
-            var matches = rounds[i].matches;
-            for (var j = 0; j < matches.length; j++) {
-                var homeTeam, awayTeam, result, homeTeamCode, awayTeamCode, stadium, stadiumCode;
-                var stage = document.createElement('span');
-                stage.className = 'stage';
+        let rounds = jsonObj['rounds'];
+        for (let i = 0; i < rounds.length; i++) {
+            let matches = rounds[i].matches;
+            let round_name = rounds[i].name;
+            for (let j = 0; j < matches.length; j++) {
+                let homeTeam, awayTeam, result, homeTeamCode, awayTeamCode, stadium, stadiumCode, stage;
 
                 homeTeam = matches[j].team1['code'];
                 awayTeam = matches[j].team2['code'];
@@ -29,18 +28,24 @@ $(document).ready(function () {
                 stadium = matches[j].stadium['key'];
                 stadiumCode = stadium.toLowerCase();
 
+                if(matches[j].knockout == true) {
+                    stage = round_name;
+                }
+                else {
+                    stage = matches[j].group;
+                }
                 if (matches[j].score1 == null && matches[j].score2 == null) {
                     result = matches[j].time;
                 }
                 else {
                     result = matches[j].score1 + ' - ' + matches[j].score2;
                 }
-                var template =
+                let template =
                     "<div class='match'>" +
                     "<div class='matchContent'>" +
                     "<div class='matchData'>" +
                     "<div class='stagenPlace'>" +
-                    matches[j].group +
+                    stage +
                     ", <span class='stadium'>" + matches[j].stadium['name'] + "</span>" +
                     "</div>" +
                     "<div class='date'>" + matches[j].date + "</div>" +
@@ -59,9 +64,6 @@ $(document).ready(function () {
                 else {
                     if (matches[j].group == group) {
                         $('.matchWrapper').append(template);
-                    }
-                    else {
-
                     }
                 }
             }
