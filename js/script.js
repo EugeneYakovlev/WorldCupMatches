@@ -83,12 +83,16 @@ $(document).ready(function () {
         e.preventDefault();
         if($(this).hasClass('active')) {
             $(this).removeClass('active');
+            $('.matchWrapper').empty();
             showMatches(worldCup, "all");
+            console.log('s');
         }
-        $(this).addClass('active');
-        $(this).siblings('a').removeClass('active');
-        $('.matchWrapper').empty();
-        let group = $(this).html();
-        showMatches(worldCup, group);
+        else {
+            $(this).addClass('active');
+            $(this).siblings('a').removeClass('active');
+            $('.matchWrapper').empty();
+            let group = $(this).html();
+            showMatches(worldCup, group);
+        }
     });
 });
