@@ -19,6 +19,7 @@ $(document).ready(function () {
             let round_name = rounds[i].name;
             for (let j = 0; j < matches.length; j++) {
                 let homeTeam, awayTeam, result, homeTeamCode, awayTeamCode, stadium, stadiumCode, stage;
+                let penalty_s = '';
 
                 homeTeam = matches[j].team1['code'];
                 awayTeam = matches[j].team2['code'];
@@ -38,7 +39,15 @@ $(document).ready(function () {
                     result = matches[j].time;
                 }
                 else {
-                    result = matches[j].score1 + ' - ' + matches[j].score2;
+                    if(matches[j].knockout == true) {
+                        if (matches[j].score1p !== null) {
+                            penalty_s = ' (' + matches[j].score1p + ' : ' + matches[j].score2p + ')';
+                        }
+                        else {
+                            penalty_s = '';
+                        }
+                    }
+                    result = matches[j].score1 + ' - ' + matches[j].score2 + penalty_s;
                 }
                 let template =
                     "<div class='match'>" +
