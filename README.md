@@ -1,4 +1,4 @@
-# World Cup Matches <a href="https://github.com/EugeneYakovlev/WorldCupMatches/settings">LIVE VERSION</a>
+# World Cup Matches <a href="https://eugeneyakovlev.github.io/WorldCupMatches/">LIVE VERSION</a>
 
 All world cup fixtures, lastest result and upcoming matches.
 
